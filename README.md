@@ -1,6 +1,6 @@
-# Jira & Confluence Assistant
+# Jira, Confluence & ServiceNow Assistant
 
-A conversational AI assistant for Jira and Confluence, powered by an MCP (Model Context Protocol) server and a chat UI. Talk to your projects and knowledge base in plain English.
+A conversational AI assistant for Jira, Confluence and ServiceNow, powered by an MCP (Model Context Protocol) server and a chat UI. Talk to your projects, knowledge base and incidents in plain English.
 
 ## Capabilities
 
@@ -19,9 +19,14 @@ A conversational AI assistant for Jira and Confluence, powered by an MCP (Model 
 - **Create** a new page in a given space
 - **List** all accessible Confluence spaces
 
+### ServiceNow
+- **Create** a new incident with urgency, impact and description
+- **Get** an incident by number (e.g. INC0010001)
+- **Search** incidents by state and/or urgency
+
 ## Stack
 
-- **MCP server** — FastMCP + `atlassian-python-api`
+- **MCP server** — FastMCP + `atlassian-python-api` + `pysnow`
 - **Backend** — FastAPI, OpenAI-compatible client (OpenAI or Ollama)
 - **Frontend** — Single-page chat UI (HTML + Tailwind)
 
@@ -68,4 +73,14 @@ Recommended models: `llama3.2`, `llama3.1`, `qwen2.5`, `mistral-nemo`.
 
 ## Environment Variables
 
-See `.env.sample` for all available options.
+| Variable | Description |
+|---|---|
+| `JIRA_BASE_URL` | Your Atlassian base URL (e.g. `https://your-org.atlassian.net`) |
+| `JIRA_EMAIL` | Atlassian account email |
+| `JIRA_API_TOKEN` | Atlassian API token |
+| `SERVICENOW_INSTANCE_URL` | ServiceNow instance URL (e.g. `https://dev12345.service-now.com`) |
+| `SERVICENOW_USERNAME` | ServiceNow username |
+| `SERVICENOW_PASSWORD` | ServiceNow password |
+| `OPENAI_API_KEY` | OpenAI API key (if using OpenAI) |
+| `LLM_PROVIDER` | `openai` (default) or `ollama` |
+| `LLM_MODEL` | Model name (default: `gpt-4o` / `llama3.2`) |

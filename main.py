@@ -10,8 +10,11 @@ from tools.confluence.get_confluence_page import get_confluence_page
 from tools.confluence.search_confluence import search_confluence
 from tools.confluence.create_confluence_page import create_confluence_page
 from tools.confluence.list_confluence_spaces import list_confluence_spaces
+from tools.servicenow.create_incident import create_incident
+from tools.servicenow.get_incident import get_incident
+from tools.servicenow.search_incidents import search_incidents
 
-mcp = FastMCP("Jira & Confluence MCP Server")
+mcp = FastMCP("Jira, Confluence & ServiceNow MCP Server")
 
 mcp.tool()(get_jira_issue)
 mcp.tool()(search_jira_issues)
@@ -25,6 +28,10 @@ mcp.tool()(get_confluence_page)
 mcp.tool()(search_confluence)
 mcp.tool()(create_confluence_page)
 mcp.tool()(list_confluence_spaces)
+
+mcp.tool()(create_incident)
+mcp.tool()(get_incident)
+mcp.tool()(search_incidents)
 
 if __name__ == "__main__":
     mcp.run()
