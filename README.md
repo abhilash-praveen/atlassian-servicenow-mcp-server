@@ -31,7 +31,7 @@ A conversational AI assistant for Jira and Confluence, powered by an MCP (Model 
 
 ```bash
 git clone <repo-url>
-cd jira-mcp
+cd atlassian-servicenow-mcp-server
 uv sync
 ```
 
