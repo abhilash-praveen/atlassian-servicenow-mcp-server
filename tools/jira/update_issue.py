@@ -1,4 +1,4 @@
-from jira_client import get_jira_client
+from clients.jira_client import get_jira_client
 
 def update_jira_issue(issue_id: str, summary: str = None, description: str = None, priority: str = None, labels: list[str] = None) -> dict:
     """Update fields on an existing Jira issue"""

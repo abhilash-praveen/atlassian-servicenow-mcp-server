@@ -13,7 +13,7 @@ from pydantic import BaseModel
 
 load_dotenv()
 
-app = FastAPI(title="Jira Assistant")
+app = FastAPI(title="Jira & Confluence Assistant")
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 LLM_PROVIDER = os.getenv("LLM_PROVIDER", "openai").lower()  # "openai" or "ollama"
@@ -47,7 +47,13 @@ async def get_mcp_tools(session: ClientSession) -> list[dict]:
 
 async def call_mcp_tool(session: ClientSession, tool_name: str, tool_args: dict) -> str:
     result = await session.call_tool(tool_name, tool_args)
-    return str(result.content[0].text)
+    if not result.content:
+        return ""
+    item = result.content[0]
+    text = item.text if hasattr(item, "text") else str(item)
+    if getattr(result, "isError", False):
+        return f"Error: {text}"
+    return text
 
 
 async def run_agent(user_prompt: str) -> dict:

@@ -1,4 +1,4 @@
-from jira_client import get_jira_client
+from clients.jira_client import get_jira_client
 
 def add_jira_comment(issue_id: str, body: str) -> dict:
     """Add a comment to a Jira issue"""

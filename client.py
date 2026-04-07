@@ -31,7 +31,13 @@ async def get_mcp_tools(session: ClientSession) -> list[dict]:
 async def call_mcp_tool(session: ClientSession, tool_name: str, tool_args: dict) -> str:
     """Call a tool on the MCP server and return the result as a string."""
     result = await session.call_tool(tool_name, tool_args)
-    return str(result.content[0].text)
+    if not result.content:
+        return ""
+    item = result.content[0]
+    text = item.text if hasattr(item, "text") else str(item)
+    if getattr(result, "isError", False):
+        raise RuntimeError(f"Tool '{tool_name}' error: {text}")
+    return text
 
 
 async def run(user_prompt: str):

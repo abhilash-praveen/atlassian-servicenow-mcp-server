@@ -1,4 +1,4 @@
-from jira_client import get_jira_client
+from clients.jira_client import get_jira_client
 
 def get_jira_issue(issue_id: str) -> dict:
     """Get a Jira issue by its ID (e.g. PROJ-123)"""

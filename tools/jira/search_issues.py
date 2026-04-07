@@ -1,4 +1,4 @@
-from jira_client import get_jira_client
+from clients.jira_client import get_jira_client
 
 def search_jira_issues(jql: str, max_results: int = 10) -> list[dict]:
     """Search Jira issues using a JQL query"""

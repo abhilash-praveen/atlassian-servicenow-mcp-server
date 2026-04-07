@@ -1,4 +1,4 @@
-from jira_client import get_jira_client
+from clients.jira_client import get_jira_client
 
 def list_jira_projects() -> list[dict]:
     """List all Jira projects accessible to the current user"""

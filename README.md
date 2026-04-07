@@ -1,9 +1,10 @@
-# Jira Assistant
+# Jira & Confluence Assistant
 
-A conversational AI assistant for Jira, powered by an MCP (Model Context Protocol) server and a chat UI. Talk to your Jira projects in plain English.
+A conversational AI assistant for Jira and Confluence, powered by an MCP (Model Context Protocol) server and a chat UI. Talk to your projects and knowledge base in plain English.
 
 ## Capabilities
 
+### Jira
 - **Search** issues using natural language (converted to JQL)
 - **Get** issue details by ID
 - **Create** new issues
@@ -12,9 +13,15 @@ A conversational AI assistant for Jira, powered by an MCP (Model Context Protoco
 - **Comment** on issues
 - **List** all accessible Jira projects
 
+### Confluence
+- **Search** pages using CQL (e.g. "Find pages about onboarding")
+- **Get** a page by ID (returns title, content, space, and URL)
+- **Create** a new page in a given space
+- **List** all accessible Confluence spaces
+
 ## Stack
 
-- **MCP server** — FastMCP + `jira` Python library
+- **MCP server** — FastMCP + `atlassian-python-api`
 - **Backend** — FastAPI, OpenAI-compatible client (OpenAI or Ollama)
 - **Frontend** — Single-page chat UI (HTML + Tailwind)
 

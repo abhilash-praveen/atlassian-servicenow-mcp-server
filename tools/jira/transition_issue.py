@@ -1,4 +1,4 @@
-from jira_client import get_jira_client
+from clients.jira_client import get_jira_client
 
 def transition_jira_issue(issue_id: str, transition_name: str) -> dict:
     """Transition a Jira issue to a new status (e.g. 'In Progress', 'Done')"""
