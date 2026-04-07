@@ -13,7 +13,7 @@ from pydantic import BaseModel
 
 load_dotenv()
 
-app = FastAPI(title="Jira & Confluence Assistant")
+app = FastAPI(title="Jira, Confluence & ServiceNow Assistant")
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 LLM_PROVIDER = os.getenv("LLM_PROVIDER", "openai").lower()  # "openai" or "ollama"
